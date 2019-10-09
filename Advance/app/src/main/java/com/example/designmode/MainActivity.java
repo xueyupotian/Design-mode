@@ -1,5 +1,6 @@
 package com.example.designmode;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
     private EditText editText2;
     private Button editText3;
     private Button editText4;
+    private Button editText5;
     private ProgressBar progressBar;
     private UserLoginPresenter userLoginPresenter = new UserLoginPresenter(this);
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
         editText2 =findViewById(R.id.text2);
         editText3 =findViewById(R.id.text3);
         editText4 =findViewById(R.id.text4);
+        editText5 =findViewById(R.id.text5);
         progressBar = findViewById(R.id.pro);
         editText3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +42,12 @@ public class MainActivity extends AppCompatActivity implements ViewInterface {
             @Override
             public void onClick(View v) {
                 userLoginPresenter.clear();
+            }
+        });
+        editText5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,TestActivity.class));
             }
         });
     }
