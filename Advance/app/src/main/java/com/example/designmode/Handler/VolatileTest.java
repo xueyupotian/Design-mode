@@ -1,4 +1,4 @@
-package com.example.designmode.Thread;
+package com.example.designmode.Handler;
 
 public class VolatileTest {
 
@@ -6,7 +6,6 @@ public class VolatileTest {
 
     public void increase() {
         //自增操作是不具备原子性的，它包括读取变量的原始值、加1、写入工作内存
-        //
         index++;
     }
 
@@ -16,7 +15,7 @@ public class VolatileTest {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 1000; j++) {
+                    for (int j = 0; j < 10000; j++) {
                         test.increase();
                     }
                 }
