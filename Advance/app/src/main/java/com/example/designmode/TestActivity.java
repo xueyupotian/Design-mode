@@ -25,11 +25,12 @@ public class TestActivity extends AppCompatActivity {
         //test();
     }
 
-    //1.主线程中通过匿名内部类创建Handler类对象
+    //1.主线程中通过匿名内部类创建Haandler类对象
     private Handler mHandler = new Handler() {
         // 通过复写handlerMessage()从而确定更新UI的操作
         @Override
         public void handleMessage(Message msg) {
+            Log.i("lance", "handleMessage: "+mHandler.getLooper().toString());
             switch (msg.what) {
                 case 1:
                     int value = msg.arg1;
@@ -59,7 +60,7 @@ public class TestActivity extends AppCompatActivity {
                     msg.what = 1;// 消息标识
                     msg.arg1 = mCount; //消息内容
                     Log.i("TAG", "count值: " + mCount);
-
+                    Log.i("lance", "handleMessage2: "+mHandler.getLooper().toString());
                     //3：在工作线程中通过Handler发送消息到消息队列中
                     if (mHandler != null) {
                         mHandler.sendMessage(msg);
@@ -68,6 +69,7 @@ public class TestActivity extends AppCompatActivity {
             }
         }.start();
     }
+
 
     public void test() {
         new Thread(new Runnable() {

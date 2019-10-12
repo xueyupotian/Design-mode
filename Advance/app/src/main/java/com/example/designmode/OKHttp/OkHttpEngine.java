@@ -4,6 +4,6 @@ import okhttp3.OkHttpClient;
 
 public class OkHttpEngine {
 
-    private OkHttpClient client;
+    private OkHttpClient client = new OkHttpClient();
 
 }

@@ -4,11 +4,6 @@ public class VolatileTest {
 
     public volatile int index = 0;
 
-    public void increase() {
-        //自增操作是不具备原子性的，它包括读取变量的原始值、加1、写入工作内存
-        index++;
-    }
-
     public static void main(String[] args) {
         final VolatileTest test = new VolatileTest();
         for (int i = 0; i < 10; i++) {
@@ -27,6 +22,12 @@ public class VolatileTest {
             Thread.yield();
         }
         System.out.println(test.index);
+
+    }
+
+    public void increase() {
+        //自增操作是不具备原子性的，它包括读取变量的原始值、加1、写入工作内存
+        index++;
     }
 
 }
